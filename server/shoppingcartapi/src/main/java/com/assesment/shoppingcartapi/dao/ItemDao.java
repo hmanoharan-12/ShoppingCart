@@ -1,4 +1,7 @@
-package com.assesment.shoppingcartapi.repository;
+package com.assesment.shoppingcartapi.dao;
+
+
+import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -10,6 +13,7 @@ import com.assesment.shoppingcartapi.entity.Item;
  * @author harrymanoharan
  *
  */
-public interface ItemRepository extends CrudRepository<Item, Long> {
+public interface ItemDao extends CrudRepository<Item, Long> {
 
+	List<Item> findAll();
 }
