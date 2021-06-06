@@ -33,7 +33,13 @@ The client side of this application is development with Angular version 10 frame
 * Once the dependencies are installed by the node package manager, Execute the command `ng serve`.
 * The client should now be running on localhost port 4200.
 
-## Usage
+## Questions?
+
+If you use this app and come across any concerns. Feel free to contact me on any questions via the information below:
+
+GitHub: [@hmanoharan-12](https://api.github.com/users/hmanoharan-12)
+
+Email: harry.manoharan.pro.com
 
 
  
