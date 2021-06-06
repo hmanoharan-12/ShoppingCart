@@ -50,8 +50,7 @@ public class ItemService {
 			}
 		}
 		
-		return itemPriceDto;
-		
+		return itemPriceDto;	
 	}
 	
 	/**
@@ -98,6 +97,15 @@ public class ItemService {
 		}else {
 			return Math.round(((noOfCartons * cartonPrice) + invUnits * 1.3 *  pricePerUnit));
 		}
+	}
+	
+	/**
+	 * Return all Items.
+	 * 
+	 * @return List of Items.
+	 */
+	public List<Item> getItems(){
+		return itemDao.findAll();
 	}
 	
 }
