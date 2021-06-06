@@ -2,6 +2,12 @@ package com.assesment.shoppingcartapi.objectbuilder;
 
 import com.assesment.shoppingcartapi.entity.Item;
 
+/**
+ * Class to build dummy objects of items for testing purpose.
+ * 
+ * @author harrymanoharan
+ *
+ */
 public class ItemBuilder {
 
 	public static Item buildPenguin() {

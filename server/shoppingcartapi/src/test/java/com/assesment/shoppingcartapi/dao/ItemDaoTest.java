@@ -14,6 +14,12 @@ import com.assesment.shoppingcartapi.objectbuilder.ItemBuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Test class for ItemDao
+ * 
+ * @author harrymanoharan
+ *
+ */
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ItemDaoTest {
