@@ -15,5 +15,19 @@ import com.assesment.shoppingcartapi.entity.Item;
  */
 public interface ItemDao extends CrudRepository<Item, Long> {
 
+	/**
+	 * Returns all items.
+	 * 
+	 * @return All list of items.
+	 */
 	List<Item> findAll();
+	
+	/**
+	 * Returns specific item by filtering through Id.
+	 * 
+	 * @param Item Id
+	 * @return Item by Id
+	 */
+	Item findById(long id);
+	
 }
