@@ -1,0 +1,61 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-10">
+            <br>
+            <input class="form-control" [(ngModel)] = "searchInput" id="search" type="text" placeholder="Search the table by typing the item name...">
+            <br>
+            <table class="table table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor = "let price of prices">
+                    <td>{{price.id}}</td>
+                    <td>{{price.name}}</td>
+                    <td>{{price.unit}}</td>
+                    <td>{{price.price}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <br>
+            <button type="button" class="btn btn-warning" data-toggle="modal" (click)="open(mymodal)">Price Calculator</button>
+        </div>
+    </div>
+    <ng-template #mymodal let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Calculate Price</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <select class="form-select" [(ngModel)] = "selectedItem">
+                <option *ngFor = "let item of items" [ngValue]="item.itemId" >{{item.itemName}}</option>
+            </select>
+            <br>
+            <select class="form-select" [(ngModel)] = "measurement">
+                <option value="CARTON">Carton</option>
+                <option value="UNIT">Unit</option>
+            </select>
+            <br>
+            <input class="form-control" type="number" placeholder="Enter quantity" [(ngModel)] = "quantity">
+            <br>
+            <h3>
+            <div class="badge bg-danger text-wrap {{errorVisibility}}" style="width: flex;">
+                {{errorText}}
+              </div>
+            </h3>
+        </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-warning" (click)="calculatePrice()">Calculate</button>
+            </div>
+      </ng-template>
+       
+</div>
