@@ -81,4 +81,19 @@ public class ItemServiceTest {
 		assertThat(itemPriceListDto.get(58).getPrice()).isEqualTo(1683);
 		assertThat(itemPriceListDto.get(18).getPrice()).isEqualTo(216);
 	}
+	
+	@Test
+	public void getItems() {
+		
+		Item itemPenguin = ItemBuilder.buildPenguin();
+		Item itemHorseshoe = ItemBuilder.buildHorseshoe();
+		
+		List<Item> itemList = new ArrayList<Item>();
+		itemList.add(itemPenguin);
+		itemList.add(itemHorseshoe);
+
+		given(itemDao.findAll()).willReturn(itemList);
+		List<Item> itemDto = itemService.getItems();
+		assertThat(itemDto).isEqualTo(itemList);
+	}
 }
