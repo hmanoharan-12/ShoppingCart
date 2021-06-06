@@ -39,7 +39,7 @@ If you use this app and come across any concerns. Feel free to contact me on any
 
 GitHub: [@hmanoharan-12](https://api.github.com/users/hmanoharan-12)
 
-Email: harry.manoharan.pro@gmailcom
+Email: harry.manoharan.pro@gmail.com
 
 
  
