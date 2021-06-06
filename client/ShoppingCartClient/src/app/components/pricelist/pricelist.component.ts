@@ -3,6 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { NgbModal,NgbModalOptions,ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AppSettings } from 'src/app/app.settings';
 
+/**
+ * This component is for controlling the price list and price calculation.
+ * 
+ */
 @Component({
   selector: 'app-pricelist',
   templateUrl: './pricelist.component.html',
@@ -18,30 +22,31 @@ export class PricelistComponent implements OnInit {
   searchInput : string;
   modalOptions : NgbModalOptions;
   closeResult : string;
-  displayPrice;
+  displayPrice = {};
   quantity : number;
   errorVisibility : string = "invisible";
+  successVisibility : string = "invisible";
   errorText : string = "";
 
-
+  // Load the price list for all items when component loads.
   ngOnInit(): void {
     this.getPriceList();
   }
 
-
+  // Returns the list of prices for all items.
   getPriceList(){
     this.http.get(AppSettings.API_ENDPOINT + "/pricelist?qty=50")
     .subscribe((data) => this.prices = data);
   }
 
-
+  // Returns all items. 
   getItems(){
     this.http.get(AppSettings.API_ENDPOINT)
     .subscribe(data => this.items = data)
   }
 
+  // Returns the price for a specific item and quanity for a given measurement. 
   calculatePrice(){
-
     if(this.selectedItem == ""){
       this.errorText = "Please select an item."
       this.errorVisibility = "visible";
@@ -53,12 +58,13 @@ export class PricelistComponent implements OnInit {
       this.errorVisibility = "visible";
     }else{
       this.http.get(AppSettings.API_ENDPOINT + "/" + this.selectedItem + "/price?qty=" + this.quantity + "&type=" + this.measurement)
-      .subscribe(data => console.log(data));
+      .subscribe(data => this.displayPrice = data , err=>console.log("error"));
+
+      this.successVisibility = "visible";
     }
-
-
   }
 
+  // Opens the modal view of price calculator.
   open(content) {
     this.getItems();
     this.modalService.open(content, this.modalOptions).result.then((result) => {
