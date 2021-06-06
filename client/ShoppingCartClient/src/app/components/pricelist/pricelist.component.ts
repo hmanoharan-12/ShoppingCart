@@ -50,22 +50,26 @@ export class PricelistComponent implements OnInit {
     if(this.selectedItem == ""){
       this.errorText = "Please select an item."
       this.errorVisibility = "visible";
+      this.successVisibility = "invisible";
     }else if (this.measurement == ""){
       this.errorText = "Please select a measurement."
       this.errorVisibility = "visible";
+      this.successVisibility = "invisible";
     }else if(this.quantity == null || this.quantity <=0){
       this.errorText = "Selected quantity should be more than 0."
       this.errorVisibility = "visible";
+      this.successVisibility = "invisible";
     }else{
       this.http.get(AppSettings.API_ENDPOINT + "/" + this.selectedItem + "/price?qty=" + this.quantity + "&type=" + this.measurement)
       .subscribe(data => this.displayPrice = data , err=>console.log("error"));
-
       this.successVisibility = "visible";
+      this.errorVisibility = "invisible";
     }
   }
 
   // Opens the modal view of price calculator.
   open(content) {
+    this.resetModal();
     this.getItems();
     this.modalService.open(content, this.modalOptions).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -84,4 +88,13 @@ export class PricelistComponent implements OnInit {
     }
   }
 
+  resetModal(){
+    this.selectedItem = "";
+    this.errorText = "";
+    this.errorVisibility = "invisible";
+    this.successVisibility = "invisible";
+    this.selectedItem = "";
+    this.measurement = "";
+    this.quantity = null;
+  }
 }
